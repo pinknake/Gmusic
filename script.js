@@ -1,7 +1,7 @@
 const songs = [
   {
-    title: "Vande Mataram",
-    src: "songs/song1.mp3",
+    title: "KARU VINTI DOKARJODI",
+    src: "songs/03 KARU VINTI DOKARJODI ARJ S",
     cover: "covers/song1.jpg"
   },
   {
