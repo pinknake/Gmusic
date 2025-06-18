@@ -16,51 +16,49 @@ const songs = [
   }
 ];
 
-let currentIndex = 0;
+let currentIndex = -1;
 
 const audio = document.getElementById("audioPlayer");
-const title = document.getElementById("title");
+const titleElement = document.getElementById("title");
 const cover = document.getElementById("cover");
 const songList = document.getElementById("songList");
+const searchInput = document.getElementById("search");
 
+// Play song
 function playSong(index) {
-  currentIndex = index;
   const song = songs[index];
+  if (!song) return;
+  currentIndex = index;
   audio.src = song.src;
-  title.innerText = song.title;
+  titleElement.innerText = song.title;
   cover.src = song.cover || "covers/default.jpg";
   audio.play();
 }
 
 // Auto play next
-audio.addEventListener("ended", function () {
-  currentIndex = (currentIndex + 1) % songs.length;
-  playSong(currentIndex);
+audio.addEventListener("ended", () => {
+  let nextIndex = (currentIndex + 1) % songs.length;
+  playSong(nextIndex);
 });
 
-// Render full song list
-function renderSongs() {
-  songList.innerHTML = '';
+// Render all songs
+function renderSongs(filter = "") {
+  songList.innerHTML = "";
   songs.forEach((song, index) => {
-    const li = document.createElement("li");
-    li.innerText = "🎵 " + song.title;
-    li.onclick = () => playSong(index);
-    songList.appendChild(li);
-  });
-}
-
-// Filter songs by search
-function filterSongs() {
-  const query = document.getElementById("search").value.toLowerCase();
-  songList.innerHTML = '';
-  songs.forEach((song, index) => {
-    if (song.title.toLowerCase().includes(query)) {
+    if (song.title.toLowerCase().includes(filter.toLowerCase())) {
       const li = document.createElement("li");
       li.innerText = "🎵 " + song.title;
-      li.onclick = () => playSong(index);
+      li.addEventListener("click", () => playSong(index));
       songList.appendChild(li);
     }
   });
 }
 
-window.onload = renderSongs;
+// Search event
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value;
+  renderSongs(query);
+});
+
+// Initial render
+renderSongs();
