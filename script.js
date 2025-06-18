@@ -5,9 +5,8 @@ const songs = [
     cover: "covers/song1.jpg"
   },
   {
-    title: "Desh Mere",
-    src: "songs/song2.mp3",
-    cover: "covers/song2.jpg"
+    title: "tone1",
+    src: "songs/tone1",
   },
   {
     title: "Teri Mitti",
