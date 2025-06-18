@@ -18,6 +18,8 @@ const songs = [
 const audio = document.getElementById("audioPlayer");
 const title = document.getElementById("title");
 const cover = document.getElementById("cover");
+const songList = document.getElementById("songList");
+
 
 function playSong(index) {
   const song =  {
@@ -40,7 +42,8 @@ let currentIndex = 0;
 const audio = document.getElementById("audioPlayer");
 const title = document.getElementById("title");
 const cover = document.getElementById("cover");
-
+const songList = document.getElementById("songList");
+    
 function playSong(index) {
   currentIndex = index;
   const song = songs[index];
@@ -62,4 +65,37 @@ audio.addEventListener("ended", function () {
   playSong(currentIndex);
 });
 
+
+
+
+// Render full song list
+function renderSongs() {
+  songList.innerHTML = '';
+  songs.forEach((song, index) => {
+    const li = document.createElement("li");
+    li.innerText = "🎵 " + song.title;
+    li.onclick = () => playSong(index);
+    songList.appendChild(li);
+  });
+}
+
+// Filter songs by search
+function filterSongs() {
+  const query = document.getElementById("search").value.toLowerCase();
+  songList.innerHTML = '';
+  songs.forEach((song, index) => {
+    if (song.title.toLowerCase().includes(query)) {
+      const li = document.createElement("li");
+      li.innerText = "🎵 " + song.title;
+      li.onclick = () => playSong(index);
+      songList.appendChild(li);
+    }
+  });
+}
+
+window.onload = renderSongs;
+
+
+
+    
 
