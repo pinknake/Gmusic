@@ -5,7 +5,7 @@ const songs = [
     cover: "covers/song1.jpg"
   },
   {
-    title: "tone1",
+    title: "Tone1",
     src: "songs/tone1",
   cover: "covers/icon19.png"
   },
