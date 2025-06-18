@@ -7,7 +7,7 @@ const songs = [
   {
     title: "tone1",
     src: "songs/tone1",
-  cover: "covers/icon19.png
+  cover: "covers/icon19.png"
   },
   {
     title: "Teri Mitti",
