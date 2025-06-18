@@ -1,12 +1,12 @@
 const songs = [
   {
     title: "KARU VINTI DOKARJODI",
-    src: "songs/03_KARU_VINTI_DOKARJODI_ARJ_S.mp3",
+    src: "songs/03_KARU_VINTI_DOKARJODI_ARJ_S",
     cover: "covers/song1.jpg"
   },
   {
     title: "Tone1",
-    src: "songs/tone1.mp3",
+    src: "songs/tone1",
     cover: "covers/icon19.png"
   },
   {
