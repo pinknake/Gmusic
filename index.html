@@ -11,6 +11,21 @@
 
   <main class="container">
     <aside class="playlist">
+      <input type="text" id="search" placeholder="Search songs..." onkeyup="filterSongs()">
+      <ul id="songList">
+        <!-- Songs will be generated here -->
+      </ul>
+    </aside>
+
+    <section class="player">
+      <img id="cover" src="covers/default.jpg" alt="Cover" width="250">
+      <h2 id="title">Select a Song</h2>
+      <audio id="audioPlayer" controls autoplay></audio>
+    </section>
+  </main>
+  
+  <main class="container">
+    <aside class="playlist">
       <ul id="songList">
         <li onclick="playSong(0)">🎵 KARU VINTI DOKARJODI</li>
         <li onclick="playSong(1)">🎵 Tone1</li>
