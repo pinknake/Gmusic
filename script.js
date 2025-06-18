@@ -1,7 +1,7 @@
 const songs = [
   {
     title: "KARU VINTI DOKARJODI",
-    src: "songs/03 KARU VINTI DOKARJODI ARJ S",
+    src: "songs/ 03 KARU VINTI DOKARJODI ARJ S"
   },
   {
     title: "Tone1",
