@@ -2,7 +2,6 @@ const songs = [
   {
     title: "CHARAN SHARAN KI VANDANA ",
     src: "songs/08 CHARAN SHARAN KI VANDANA "
-    cover: "covers/RADHASWAMI JI.JPG "
   },
   {
     title: "Tone1",
@@ -12,7 +11,7 @@ const songs = [
   {
     title: " DARD DUKHI KE VIRHAN BHARI ",
     src: "songs/04 DARD DUKHI KE VIRHAN BHARI ",
-    cover: "covers/RADHASWAMI JI.JPG "
+    cover: "covers/RADHASWAMI JI.JPG"
   }
 ];
 
