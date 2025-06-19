@@ -1,6 +1,6 @@
 const songs = [
   {
-    title: "KARU VINTI DOKARJODI",
+    title: "CHARAN SHARAN KI VANDANA ",
     src: "songs/08 CHARAN SHARAN KI VANDANA "
   },
   {
@@ -9,8 +9,8 @@ const songs = [
     cover: "covers/icon19.png"
   },
   {
-    title: "Teri Mitti",
-    src: "songs/song3.mp3",
+    title: " DARD DUKHI KE VIRHAN BHARI ",
+    src: "songs/04 DARD DUKHI KE VIRHAN BHARI ",
     cover: "covers/song3.jpg"
   }
 ];
