@@ -4,6 +4,10 @@ const songs = [
     src: "songs/08 CHARAN SHARAN KI VANDANA "
   },
   {
+    title: "Google Drive Song",
+    src: "https://drive.google.com/uc?export=download&id=1qQ7WbWA5SWN3NUyh9Eal74hVeM6YkSZ8"
+  },  
+  {
     title: "Tone1",
     src: "songs/tone1",
     cover: "covers/icon19.png"
