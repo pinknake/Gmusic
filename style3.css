@@ -1,0 +1,98 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+}
+
+header {
+  background: #1a237e;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.playlist {
+  width: 30%;
+  padding: 10px;
+}
+
+.player {
+  width: 70%;
+  padding: 10px;
+  text-align: center;
+}
+
+input#search {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+}
+
+ul#songList {
+  list-style: none;
+  padding: 0;
+}
+
+ul#songList li {
+  background: white;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+ul#songList li:hover {
+  background: #e0f7fa;
+}
+
+.native-ad {
+  margin-top: 20px;
+}
+
+/* Mobile First Styles */
+.mobile-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+  padding: 5px;
+  text-align: center;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .playlist, .player {
+    width: 100%;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}
