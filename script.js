@@ -5,7 +5,7 @@ const songs = [
   },
   {
     title: "Google Drive Song",
-    src: "https://drive.google.com/uc?export=download&id=1qQ7WbWA5SWN3NUyh9Eal74hVeM6YkSZ8"
+    src: "songs/AUD-20250625-WA0000.opus"
   },  
   {
     title: "Tone1",
