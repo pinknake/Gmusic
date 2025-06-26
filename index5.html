@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎵 Bharat Music</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fce4ec;
+      color: #333;
+      padding-bottom: 70px; /* space for ad */
+    }
+
+    header {
+      background: linear-gradient(to right, #ff4081, #f50057);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .playlist input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    #songList {
+      list-style: none;
+      padding: 0;
+    }
+
+    #songList li {
+      background: #fff;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #songList li:hover {
+      background: #f8bbd0;
+    }
+
+    .player {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #cover {
+      border-radius: 12px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 3px solid #f06292;
+    }
+
+    #title {
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #e91e63;
+    }
+
+    audio {
+      width: 90%;
+      max-width: 300px;
+      margin-top: 10px;
+    }
+
+    .ad-banner {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      z-index: 999;
+      background: white;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    🇮🇳 Bharat Music - Kids Friendly 🎶
+  </header>
+
+  <main class="container">
+    <div class="playlist">
+      <input type="text" id="search" placeholder="🔍 Search songs..." />
+      <ul id="songList"></ul>
+    </div>
+
+    <div class="player">
+      <img id="cover" src="covers/default.jpg" alt="Cover" />
+      <h2 id="title">🎵 Select a Song</h2>
+      <audio id="audioPlayer" controls autoplay></audio>
+    </div>
+  </main>
+
+  <!-- 🟨 Banner Ad (Mobile) -->
+  <div class="ad-banner">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '2839a3c1ca8fc9e07589a1b83ea67a15',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/2839a3c1ca8fc9e07589a1b83ea67a15/invoke.js"></script>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
