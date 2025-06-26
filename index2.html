@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bharat Music 🎵</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f2f2f2;
+    }
+
+    header {
+      background: #222;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+
+    .playlist, .player {
+      flex: 1 1 300px;
+      padding: 20px;
+    }
+
+    .playlist input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    #songList li {
+      margin: 10px 0;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    #cover {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    .ads {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .share-btn {
+      background: #007bff;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🇮🇳 Bharat Music</h1>
+    <button class="share-btn" onclick="shareApp()">🔗 Share App</button>
+  </header>
+
+  <!-- Social JS Ads Bypass -->
+  <script type='text/javascript' src='//pl27011960.profitableratecpm.com/ef/1a/43/ef1a432319118bcb45467ce0fd7f2ff4.js'></script>
+
+  <main class="container">
+    <aside class="playlist">
+      <input type="text" id="search" placeholder="Search songs..." />
+      <ul id="songList"></ul>
+    </aside>
+
+    <section class="player">
+      <img id="cover" src="covers/default.jpg" alt="Cover" width="250">
+      <h2 id="title">Select a Song</h2>
+      <audio id="audioPlayer" controls autoplay></audio>
+
+      <!-- Native Ads Section -->
+      <div class="ads">
+        <script async="async" data-cfasync="false" src="//pl26993212.profitableratecpm.com/f411671ee1d0146704d13266d9687f63/invoke.js"></script>
+        <div id="container-f411671ee1d0146704d13266d9687f63"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Bharat Music 🎶 | Powered by BharatVerse 🎧
+  </footer>
+
+  <script>
+    function shareApp() {
+      if (navigator.share) {
+        navigator.share({
+          title: "Bharat Music 🎵",
+          text: "Listen free music on Bharat Music 🎶",
+          url: window.location.href
+        });
+      } else {
+        alert("Sharing not supported on this device.");
+      }
+    }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
