@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🇮🇳 Bharat Music 🎶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff9f9, #fce4ec);
+      margin: 0;
+      padding-bottom: 120px;
+    }
+
+    header {
+      background-color: #d81b60;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .container {
+      padding: 15px;
+    }
+
+    .playlist input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    ul#songList {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul#songList li {
+      padding: 10px;
+      background: #fff;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    ul#songList li:hover {
+      background: #fce4ec;
+    }
+
+    .player {
+      text-align: center;
+    }
+
+    .player img {
+      width: 200px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 3px solid #e91e63;
+    }
+
+    .player h2 {
+      font-size: 18px;
+      color: #c2185b;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* 🌟 Sticky Mini Player */
+    .mini-player {
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      background: #fff0f5;
+      border-top: 2px solid #f06292;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .mini-player img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      margin-right: 10px;
+      object-fit: cover;
+      border: 2px solid #ec407a;
+    }
+
+    .mini-info {
+      flex: 1;
+    }
+
+    .mini-info strong {
+      color: #d81b60;
+      font-size: 15px;
+    }
+
+    .mini-info audio {
+      width: 100%;
+    }
+
+    .share-btn {
+      margin-left: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    /* 📢 Banner Ad */
+    .ad-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 5px;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<header>🇮🇳 Bharat Music 🎶</header>
+
+<div class="container">
+  <div class="playlist">
+    <input type="text" id="search" placeholder="Search songs..." />
+    <ul id="songList"></ul>
+  </div>
+
+  <div class="player">
+    <img id="cover" src="covers/default.jpg" alt="cover">
+    <h2 id="title">Select a Song</h2>
+    <audio id="audioPlayer" controls autoplay></audio>
+  </div>
+</div>
+
+<!-- 🎶 Mini Sticky Player -->
+<div class="mini-player">
+  <img id="miniCover" src="covers/default.jpg" alt="cover">
+  <div class="mini-info">
+    <strong id="miniTitle">No Song Playing</strong>
+    <audio id="miniAudio" controls></audio>
+  </div>
+  <button class="share-btn" onclick="shareSong()">📤 Share</button>
+</div>
+
+<!-- 📢 Banner Ad -->
+<div class="ad-banner">
+  <script type="text/javascript">
+    atOptions = {
+      'key': '2839a3c1ca8fc9e07589a1b83ea67a15',
+      'format': 'iframe',
+      'height': 50,
+      'width': 320,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/2839a3c1ca8fc9e07589a1b83ea67a15/invoke.js"></script>
+</div>
+
+<!-- ✅ SCRIPT -->
+<script>
+const songs = [
+  {
+    title: "CHARAN SHARAN KI VANDANA",
+    src: "songs/08 CHARAN SHARAN KI VANDANA ",
+    cover: "covers/icon1.png"
+  },
+  {
+    title: "Tone1",
+    src: "songs/tone1",
+    cover: "covers/icon19.png"
+  },
+  {
+    title: "DARD DUKHI KE VIRHAN BHARI",
+    src: "songs/04 DARD DUKHI KE VIRHAN BHARI ",
+    cover: "covers/RADHASWAMI JI.JPG"
+  }
+];
+
+let currentIndex = -1;
+
+const audio = document.getElementById("audioPlayer");
+const titleElement = document.getElementById("title");
+const cover = document.getElementById("cover");
+const songList = document.getElementById("songList");
+const searchInput = document.getElementById("search");
+
+const miniAudio = document.getElementById("miniAudio");
+const miniTitle = document.getElementById("miniTitle");
+const miniCover = document.getElementById("miniCover");
+
+// 🔊 Play Song
+function playSong(index) {
+  const song = songs[index];
+  if (!song) return;
+
+  currentIndex = index;
+
+  audio.src = song.src;
+  audio.play();
+  titleElement.innerText = song.title;
+  cover.src = song.cover || "covers/default.jpg";
+
+  miniAudio.src = song.src;
+  miniAudio.play();
+  miniTitle.innerText = song.title;
+  miniCover.src = song.cover || "covers/default.jpg";
+}
+
+// 🔄 Next Song on End
+audio.addEventListener("ended", () => {
+  let nextIndex = (currentIndex + 1) % songs.length;
+  playSong(nextIndex);
+});
+
+// 🔍 Render Songs
+function renderSongs(filter = "") {
+  songList.innerHTML = "";
+  songs.forEach((song, index) => {
+    if (song.title.toLowerCase().includes(filter.toLowerCase())) {
+      const li = document.createElement("li");
+      li.innerText = "🎵 " + song.title;
+      li.addEventListener("click", () => playSong(index));
+      songList.appendChild(li);
+    }
+  });
+}
+
+// 🔤 Search Filter
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value;
+  renderSongs(query);
+});
+
+// 📤 Share Song
+function shareSong() {
+  if (currentIndex === -1) return alert("No song playing!");
+
+  const song = songs[currentIndex];
+  const msg = `🎧 Listen to this song on Bharat Music:\n${song.title}\n`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Bharat Music 🎶",
+      text: msg,
+      url: window.location.href
+    });
+  } else {
+    const whatsapp = `https://wa.me/?text=${encodeURIComponent(msg + window.location.href)}`;
+    window.open(whatsapp, '_blank');
+  }
+}
+
+// 🔃 Start
+renderSongs();
+</script>
+
+</body>
+</html>
