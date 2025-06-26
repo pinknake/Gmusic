@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🇮🇳 Bharat Music 🎶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #fff, #fce4ec);
+      color: #333;
+    }
+
+    header {
+      background: #d81b60;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      background: #f8bbd0;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    .tabs div {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #fff0f5;
+      color: #880e4f;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tabs div:hover {
+      background: #f48fb1;
+    }
+
+    .container {
+      padding: 15px;
+    }
+
+    .playlist input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    ul#songList {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul#songList li {
+      background: #ffffff;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    ul#songList li:hover {
+      transform: scale(1.01);
+    }
+
+    .song-cover {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 12px;
+      border: 2px solid #ec407a;
+    }
+
+    .song-info {
+      flex: 1;
+    }
+
+    .song-info strong {
+      display: block;
+      color: #d81b60;
+    }
+
+    .player {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .player img {
+      width: 220px;
+      border-radius: 12px;
+      border: 4px solid #f06292;
+      margin-bottom: 10px;
+    }
+
+    .player h2 {
+      font-size: 20px;
+      color: #c2185b;
+      margin-bottom: 10px;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .mini-player {
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      right: 0;
+      background: #fff0f5;
+      border-top: 2px solid #f06292;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .mini-player img {
+      width: 50px;
+      height: 50px;
+      border-radius: 6px;
+      margin-right: 10px;
+      object-fit: cover;
+      border: 2px solid #ec407a;
+    }
+
+    .mini-info {
+      flex: 1;
+    }
+
+    .mini-info strong {
+      color: #d81b60;
+      font-size: 15px;
+    }
+
+    .mini-info audio {
+      width: 100%;
+    }
+
+    .share-btn {
+      margin-left: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .ad-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 5px;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<header>🇮🇳 Bharat Music 🎶</header>
+
+<div class="tabs">
+  <div>Songs</div>
+  <div>Playlists</div>
+  <div>Artists</div>
+  <div>Genres</div>
+  <div>Folders</div>
+</div>
+
+<div class="container">
+  <div class="playlist">
+    <input type="text" id="search" placeholder="Search songs..." />
+    <ul id="songList"></ul>
+  </div>
+
+  <div class="player">
+    <img id="cover" src="covers/default.jpg" alt="cover">
+    <h2 id="title">Select a Song</h2>
+    <audio id="audioPlayer" controls autoplay></audio>
+  </div>
+</div>
+
+<div class="mini-player">
+  <img id="miniCover" src="covers/default.jpg" alt="cover">
+  <div class="mini-info">
+    <strong id="miniTitle">No Song Playing</strong>
+    <audio id="miniAudio" controls></audio>
+  </div>
+  <button class="share-btn" onclick="shareSong()">📤 Share</button>
+</div>
+
+<div class="ad-banner">
+  <script type="text/javascript">
+    atOptions = {
+      'key': '2839a3c1ca8fc9e07589a1b83ea67a15',
+      'format': 'iframe',
+      'height': 50,
+      'width': 320,
+      'params': {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/2839a3c1ca8fc9e07589a1b83ea67a15/invoke.js"></script>
+</div>
+
+<script>
+const songs = [
+  {
+    title: "CHARAN SHARAN KI VANDANA",
+    src: "songs/08 CHARAN SHARAN KI VANDANA ",
+    cover: "covers/icon1.png"
+  },
+  {
+    title: "Tone1",
+    src: "songs/tone1",
+    cover: "covers/icon19.png"
+  },
+  {
+    title: "DARD DUKHI KE VIRHAN BHARI",
+    src: "songs/04 DARD DUKHI KE VIRHAN BHARI ",
+    cover: "covers/RADHASWAMI JI.JPG"
+  }
+];
+
+let currentIndex = -1;
+
+const audio = document.getElementById("audioPlayer");
+const titleElement = document.getElementById("title");
+const cover = document.getElementById("cover");
+const songList = document.getElementById("songList");
+const searchInput = document.getElementById("search");
+
+const miniAudio = document.getElementById("miniAudio");
+const miniTitle = document.getElementById("miniTitle");
+const miniCover = document.getElementById("miniCover");
+
+function playSong(index) {
+  const song = songs[index];
+  if (!song) return;
+
+  currentIndex = index;
+
+  audio.src = song.src;
+  audio.play();
+  titleElement.innerText = song.title;
+  cover.src = song.cover || "covers/default.jpg";
+
+  miniAudio.src = song.src;
+  miniAudio.play();
+  miniTitle.innerText = song.title;
+  miniCover.src = song.cover || "covers/default.jpg";
+}
+
+audio.addEventListener("ended", () => {
+  let nextIndex = (currentIndex + 1) % songs.length;
+  playSong(nextIndex);
+});
+
+function renderSongs(filter = "") {
+  songList.innerHTML = "";
+  songs.forEach((song, index) => {
+    if (song.title.toLowerCase().includes(filter.toLowerCase())) {
+      const li = document.createElement("li");
+      const img = document.createElement("img");
+      img.src = song.cover || "covers/default.jpg";
+      img.className = "song-cover";
+
+      const info = document.createElement("div");
+      info.className = "song-info";
+
+      const strong = document.createElement("strong");
+      strong.textContent = song.title;
+
+      info.appendChild(strong);
+      li.appendChild(img);
+      li.appendChild(info);
+
+      li.addEventListener("click", () => playSong(index));
+      songList.appendChild(li);
+    }
+  });
+}
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value;
+  renderSongs(query);
+});
+
+function shareSong() {
+  if (currentIndex === -1) return alert("No song playing!");
+
+  const song = songs[currentIndex];
+  const msg = `🎧 Listen to this song on Bharat Music:\n${song.title}\n`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Bharat Music 🎶",
+      text: msg,
+      url: window.location.href
+    });
+  } else {
+    const whatsapp = `https://wa.me/?text=${encodeURIComponent(msg + window.location.href)}`;
+    window.open(whatsapp, '_blank');
+  }
+}
+
+renderSongs();
+</script>
+</body>
+</html>
