@@ -1,4 +1,4 @@
-body {
+ibody {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f9f9f9;
@@ -66,16 +66,17 @@ header {
   bottom: 0;
   width: 100%;
   z-index: 999;
-  background: #ffffff;
+  background: #fff;
+  padding: 4px 0;
   box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
-  padding: 5px;
   text-align: center;
+  height: 60px; /* 👈 Ad height fix kiya */
+  overflow: hidden; /* 👈 Scroll bar hata diya */
 }
 
-.mobile-only {
-  display: none;
+#container-f411671ee1d0146704d13266d9687f63 {
+  height: 100%; /* 👈 Force ad to fit container */
 }
-
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
