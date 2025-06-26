@@ -62,7 +62,7 @@ ul#songList {
   list-style: none;
   padding: 0;
 }
-
+    
 ul#songList li {
   background: #ffffff;
   border-radius: 12px;
@@ -154,7 +154,10 @@ audio {
 .mini-info audio {
   width: 100%;
 }
-
+.installBtn:hover {
+  background: #c2185b;
+}
+    
 .share-btn {
   margin-left: 10px;
   background: #4caf50;
@@ -187,6 +190,9 @@ audio {
     <div class="tab" onclick="filterTab('artists')">Artists</div>
     <div class="tab" onclick="filterTab('genres')">Genres</div>
     <div class="tab" onclick="filterTab('folders')">Folders</div>
+  <button id="installBtn" style="display:none;position:fixed;top:15px;right:15px;background:#d81b60;color:#fff;padding:10px 15px;border:none;border-radius:8px;font-weight:bold;z-index:999;">
+  📲 Install
+</button>
   </div>
   <div class="container">
     <div class="playlist">
@@ -332,7 +338,37 @@ function filterTab(tabName) {
 }
 
 renderSongs();
+    
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
 
-  </script>
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); // Prevent auto prompt
+    deferredPrompt = e;
+    installBtn.style.display = 'block'; // Show install button
+  });
+
+  installBtn.addEventListener('click', () => {
+    installBtn.style.display = 'none';
+    if (deferredPrompt) {
+      deferredPrompt.prompt(); // Show native install popup
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted install');
+        } else {
+          console.log('User dismissed install');
+        }
+        deferredPrompt = null;
+      });
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    console.log('App installed!');
+    installBtn.style.display = 'none';
+  });
+</script>
+          
+  
 </body>
 </html>
