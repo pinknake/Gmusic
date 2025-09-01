@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🇮🇳 Bharat Music 🎶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="file_000000002e7861f983169586014426e7.png">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, #232526, #414345);
+      color: white;
+    }
+
+    header {
+      background: rgba(216, 27, 96, 0.9);
+      backdrop-filter: blur(6px);
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .mode-toggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      font-size: 15px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .tabs div {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      color: #fff;
+    }
+
+    .tabs div.active {
+      background: #d81b60;
+      transform: scale(1.1);
+    }
+
+    .container {
+      padding: 15px;
+    }
+
+    .playlist input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    ul#songList {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul#songList li {
+      background: rgba(255,255,255,0.3);
+      border-radius: 16px;
+      margin-bottom: 14px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    ul#songList li:hover {
+      transform: scale(1.03);
+      background: rgba(255,255,255,0.5);
+    }
+
+    .song-cover {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-right: 14px;
+      border: 2px solid #fff;
+    }
+
+    .song-info strong {
+      display: block;
+      font-size: 16px;
+      color: #d81b60;
+    }
+
+    .player {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .player img {
+      width: 240px;
+      border-radius: 16px;
+      border: 4px solid #fff;
+      margin-bottom: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    .visualizer {
+      display: flex;
+      justify-content: center;
+      margin: 12px 0;
+    }
+
+    .bar {
+      width: 6px;
+      height: 30px;
+      margin: 0 3px;
+      background: #d81b60;
+      border-radius: 4px;
+      animation: bounce 1s infinite ease-in-out;
+    }
+
+    .bar:nth-child(2) { animation-delay: 0.2s; }
+    .bar:nth-child(3) { animation-delay: 0.4s; }
+    .bar:nth-child(4) { animation-delay: 0.6s; }
+    .bar:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes bounce {
+      0%,100% { height: 20px; }
+      50% { height: 50px; }
+    }
+
+    audio {
+      width: 100%;
+      max-width: 450px;
+    }
+
+    .mini-player {
+      position: fixed;
+      bottom: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(6px);
+      border-top: 2px solid #f06292;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .mini-player img {
+      width: 55px;
+      height: 55px;
+      border-radius: 8px;
+      margin-right: 12px;
+      object-fit: cover;
+    }
+
+    .mini-info strong {
+      color: #d81b60;
+      font-size: 16px;
+    }
+
+    .fab {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background: #d81b60;
+      color: white;
+      font-size: 28px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .fab:hover {
+      transform: rotate(20deg) scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🇮🇳 Bharat Music 🎶 
+    <span class="mode-toggle" onclick="toggleMode()">🌙</span>
+  </header>
+
+  <div class="tabs">
+    <div class="tab active" onclick="filterTab('songs')">Songs</div>
+    <div class="tab" onclick="filterTab('artists')">Artists</div>
+    <div class="tab" onclick="filterTab('genres')">Genres</div>
+    <div class="tab" onclick="filterTab('playlists')">Playlists</div>
+  </div>
+
+  <div class="container">
+    <div class="playlist">
+      <input type="text" id="search" placeholder="🔍 Search songs..." />
+      <ul id="songList"></ul>
+    </div>
+    <div class="player">
+      <img id="cover" src="covers/default.jpg" alt="cover">
+      <h2 id="title">Select a Song</h2>
+      <div class="visualizer">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <audio id="audioPlayer" controls autoplay></audio>
+    </div>
+  </div>
+
+  <div class="mini-player">
+    <img id="miniCover" src="covers/default.jpg" alt="cover">
+    <div class="mini-info">
+      <strong id="miniTitle">No Song Playing</strong>
+      <audio id="miniAudio" controls></audio>
+    </div>
+  </div>
+
+  <div class="fab" onclick="shufflePlay()">🔀</div>
+
+  <script>
+    const songs = [
+      { title: "Namo Namo Satguru", src: "songs/NAMO-NAMO-SATGURU-NAMO.mp3", cover: "covers/icon1.png", artist: "Radha Swami", genre: "Bhajan" },
+      { title: "Mere Pyare Guru Data", src: "songs/05-MERE-PYARE-GURU-DATA.mp3", cover: "covers/icon19.png", artist: "System", genre: "Tone" },
+      { title: "Guru Ki Kar Hardam Pooja", src: "songs/06-GURU-KI-KAR-HARDAM-POOJA.mp3", cover: "covers/RADHASWAMI JI.JPG", artist: "Radha Swami", genre: "Sad" }
+    ];
+
+    let currentIndex = -1, currentTab = 'songs';
+
+    const audio = document.getElementById("audioPlayer");
+    const titleElement = document.getElementById("title");
+    const cover = document.getElementById("cover");
+    const songList = document.getElementById("songList");
+    const searchInput = document.getElementById("search");
+    const miniAudio = document.getElementById("miniAudio");
+    const miniTitle = document.getElementById("miniTitle");
+    const miniCover = document.getElementById("miniCover");
+
+    function playSong(index) {
+      const song = songs[index];
+      if (!song) return;
+      currentIndex = index;
+      audio.src = song.src;
+      audio.play();
+      titleElement.innerText = song.title;
+      cover.src = song.cover || "covers/default.jpg";
+      miniAudio.src = song.src;
+      miniAudio.play();
+      miniTitle.innerText = song.title;
+      miniCover.src = song.cover || "covers/default.jpg";
+    }
+
+    function renderSongs(filter = "") {
+      songList.innerHTML = "";
+      songs.forEach((song, index) => {
+        if (song.title.toLowerCase().includes(filter.toLowerCase())) {
+          const li = document.createElement("li");
+          li.innerHTML = `<img src="${song.cover || 'covers/default.jpg'}" class="song-cover"><div class="song-info"><strong>${song.title}</strong><small>${song.artist || ''}</small></div>`;
+          li.addEventListener("click", () => playSong(index));
+          songList.appendChild(li);
+        }
+      });
+    }
+
+    function shufflePlay() {
+      const randomIndex = Math.floor(Math.random() * songs.length);
+      playSong(randomIndex);
+    }
+
+    function filterTab(tabName) {
+      currentTab = tabName;
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(tab => {
+        if (tab.innerText.toLowerCase() === tabName) tab.classList.add('active');
+      });
+      renderSongs(searchInput.value);
+    }
+
+    searchInput.addEventListener("input", () => renderSongs(searchInput.value));
+    renderSongs();
+
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
