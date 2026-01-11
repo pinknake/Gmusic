@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="en">
 <head>
+  <script src='//libtl.com/sdk.js' data-zone='10446775' data-sdk='show_10446775'></script>
   <meta charset="UTF-8">
   <title>🇮🇳 Bharat Music 🎶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -434,7 +435,23 @@ renderSongs();
     installBtn.style.display = 'none';
   });
 </script>
-          
+         <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // 🔥 AUTO IN-APP INTERSTITIAL
+  show_10446775({
+    type: 'inApp',
+    inAppSettings: {
+      frequency: 2,     // kitni baar
+      capping: 0.1,     // 6 min
+      interval: 30,     // gap
+      timeout: 5,       // delay
+      everyPage: false
+    }
+  });
+
+});
+</script> 
   
 </body>
 </html>
