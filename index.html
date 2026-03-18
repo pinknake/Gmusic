@@ -24,16 +24,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Radhaswami Divine">
   <meta name="twitter:description" content="Divine bhajans and spiritual music">
-  
-  <!-- ===== PWA SUPPORT ===== -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Radhaswami Divine">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
-  
+
   <!-- ===== FONTS ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   
@@ -1143,29 +1134,6 @@
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // ==================== PWA INSTALL ====================
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      
-      // Show install button in floating buttons
-      const installBtn = document.createElement('button');
-      installBtn.className = 'float-btn';
-      installBtn.innerHTML = '<i class="fas fa-download"></i>';
-      installBtn.style.bottom = '80px';
-      installBtn.onclick = installPWA;
-      document.body.appendChild(installBtn);
-    });
-
-    function installPWA() {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        deferredPrompt = null;
-      });
     }
 
     // ==================== EXPOSE GLOBALLY ====================
