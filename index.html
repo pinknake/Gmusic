@@ -58,67 +58,6 @@ Just open index.html in any modern browser. No internet needed.
       radial-gradient(600px 500px at 50% 90%, rgba(236,72,153,.18), transparent 60%);
     filter:blur(40px);
   }
-   / Open Radhaswami Offline Player
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Radhaswami Bhajan Player - Offline</title>
-<meta name="theme-color" content="#0b0e14">
-<!--
-FOLDER STRUCTURE (for GitHub / offline use):
-/
-├── index.html                 ← this single file
-├── songs/
-│   ├── NAMO-NAMO-SATGURU-NAMO.mp3
-│   ├── 02-BARAMBAR-KARU-VINTI-RADHA-SWAMI-AAGE.mp3
-│   ├── 03 KARU VINTI DOKARJODI ARJ S
-│   ├── 04 DARD DUKHI KE VIRHAN BHARI
-│   ├── 05-MERE-PYARE-GURU-DATA.mp3
-│   ├── 06-GURU-KI-KAR-HARDAM-POOJA.mp3
-│   ├── 07-GURU-DHAYAN-DHARO-TUM.mp3
-│   ├── 08 CHARAN SHARAN KI VANDANA
-│   ├── 09-RADHA-SWAMI-NAAM-SURIR-MAN-MEIN.mp3
-│   ├── 10-AARTI-AAGE-RADHA-SWAMI-KI.mp3
-│   ├── 11-NAMO-NAMO-SATGURU-HAATH-JODE-KARU-VINNTI.mp3
-│   ├── 12-MANWA-TU-BANA-MADARI.mp3
-│   ├── 13-MAIN-TO-DHUDHAT-DOLU-HE-SATGURU.mp3
-│   ├── 15-TAN-MAN-DHAN-KI-BAAZI-LA-LE.mp3
-│   └── 16-TANHE-NAHI-AAYA-CHINA.mp3
-└── satsang/
-    ├── Mera To Satguru Raazi Sai.mp3
-    └── Satguru Mere Main Arj Karu Dar Tere.mp3
-
-Just open index.html in any modern browser. No internet needed.
--->
-<style>
-  :root{
-    --bg:#070b13; --bg-elev:#101726; --text:#e7ecf5; --text-dim:#9aa4b2;
-    --accent:#8b5cf6; --accent2:#06b6d4;
-    --glass:rgba(255,255,255,.06); --glass-border:rgba(255,255,255,.12);
-    --shadow:0 10px 30px rgba(0,0,0,.5);
-  }
-  [data-theme="light"]{
-    --bg:#f4f6fb; --bg-elev:#ffffff; --text:#0c1220; --text-dim:#5b6472;
-    --accent:#6d28d9; --accent2:#0891b2;
-    --glass:rgba(255,255,255,.7); --glass-border:rgba(0,0,0,.08);
-    --shadow:0 10px 30px rgba(13,18,30,.1);
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; overflow-x:hidden;
-  }
-  body::before{
-    content:""; position:fixed; inset:-20%; z-index:-2;
-    background:
-      radial-gradient(800px 600px at 15% 10%, rgba(139,92,246,.25), transparent 60%),
-      radial-gradient(700px 500px at 85% 20%, rgba(6,182,212,.22), transparent 60%),
-      radial-gradient(600px 500px at 50% 90%, rgba(236,72,153,.18), transparent 60%);
-    filter:blur(40px);
-  }
   .app{max-width:1350px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column}
   header{position:sticky; top:0; z-index:20; padding:16px 18px; backdrop-filter:saturate(140%) blur(12px);}
   .header-inner{display:flex; align-items:center; gap:12px}
