@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radhaswami Bhajan Player - Offline</title>
+<meta name="theme-color" content="#0b0e14">
+<!--
+FOLDER STRUCTURE (for GitHub / offline use):
+/
+├── index.html                 ← this single file
+├── songs/
+│   ├── NAMO-NAMO-SATGURU-NAMO.mp3
+│   ├── 02-BARAMBAR-KARU-VINTI-RADHA-SWAMI-AAGE.mp3
+│   ├── 03 KARU VINTI DOKARJODI ARJ S
+│   ├── 04 DARD DUKHI KE VIRHAN BHARI
+│   ├── 05-MERE-PYARE-GURU-DATA.mp3
+│   ├── 06-GURU-KI-KAR-HARDAM-POOJA.mp3
+│   ├── 07-GURU-DHAYAN-DHARO-TUM.mp3
+│   ├── 08 CHARAN SHARAN KI VANDANA
+│   ├── 09-RADHA-SWAMI-NAAM-SURIR-MAN-MEIN.mp3
+│   ├── 10-AARTI-AAGE-RADHA-SWAMI-KI.mp3
+│   ├── 11-NAMO-NAMO-SATGURU-HAATH-JODE-KARU-VINNTI.mp3
+│   ├── 12-MANWA-TU-BANA-MADARI.mp3
+│   ├── 13-MAIN-TO-DHUDHAT-DOLU-HE-SATGURU.mp3
+│   ├── 15-TAN-MAN-DHAN-KI-BAAZI-LA-LE.mp3
+│   └── 16-TANHE-NAHI-AAYA-CHINA.mp3
+└── satsang/
+    ├── Mera To Satguru Raazi Sai.mp3
+    └── Satguru Mere Main Arj Karu Dar Tere.mp3
+
+Just open index.html in any modern browser. No internet needed.
+-->
+<style>
+  :root{
+    --bg:#070b13; --bg-elev:#101726; --text:#e7ecf5; --text-dim:#9aa4b2;
+    --accent:#8b5cf6; --accent2:#06b6d4;
+    --glass:rgba(255,255,255,.06); --glass-border:rgba(255,255,255,.12);
+    --shadow:0 10px 30px rgba(0,0,0,.5);
+  }
+  [data-theme="light"]{
+    --bg:#f4f6fb; --bg-elev:#ffffff; --text:#0c1220; --text-dim:#5b6472;
+    --accent:#6d28d9; --accent2:#0891b2;
+    --glass:rgba(255,255,255,.7); --glass-border:rgba(0,0,0,.08);
+    --shadow:0 10px 30px rgba(13,18,30,.1);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:-20%; z-index:-2;
+    background:
+      radial-gradient(800px 600px at 15% 10%, rgba(139,92,246,.25), transparent 60%),
+      radial-gradient(700px 500px at 85% 20%, rgba(6,182,212,.22), transparent 60%),
+      radial-gradient(600px 500px at 50% 90%, rgba(236,72,153,.18), transparent 60%);
+    filter:blur(40px);
+  }
+   / Open Radhaswami Offline Player
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radhaswami Bhajan Player - Offline</title>
+<meta name="theme-color" content="#0b0e14">
+<!--
+FOLDER STRUCTURE (for GitHub / offline use):
+/
+├── index.html                 ← this single file
+├── songs/
+│   ├── NAMO-NAMO-SATGURU-NAMO.mp3
+│   ├── 02-BARAMBAR-KARU-VINTI-RADHA-SWAMI-AAGE.mp3
+│   ├── 03 KARU VINTI DOKARJODI ARJ S
+│   ├── 04 DARD DUKHI KE VIRHAN BHARI
+│   ├── 05-MERE-PYARE-GURU-DATA.mp3
+│   ├── 06-GURU-KI-KAR-HARDAM-POOJA.mp3
+│   ├── 07-GURU-DHAYAN-DHARO-TUM.mp3
+│   ├── 08 CHARAN SHARAN KI VANDANA
+│   ├── 09-RADHA-SWAMI-NAAM-SURIR-MAN-MEIN.mp3
+│   ├── 10-AARTI-AAGE-RADHA-SWAMI-KI.mp3
+│   ├── 11-NAMO-NAMO-SATGURU-HAATH-JODE-KARU-VINNTI.mp3
+│   ├── 12-MANWA-TU-BANA-MADARI.mp3
+│   ├── 13-MAIN-TO-DHUDHAT-DOLU-HE-SATGURU.mp3
+│   ├── 15-TAN-MAN-DHAN-KI-BAAZI-LA-LE.mp3
+│   └── 16-TANHE-NAHI-AAYA-CHINA.mp3
+└── satsang/
+    ├── Mera To Satguru Raazi Sai.mp3
+    └── Satguru Mere Main Arj Karu Dar Tere.mp3
+
+Just open index.html in any modern browser. No internet needed.
+-->
+<style>
+  :root{
+    --bg:#070b13; --bg-elev:#101726; --text:#e7ecf5; --text-dim:#9aa4b2;
+    --accent:#8b5cf6; --accent2:#06b6d4;
+    --glass:rgba(255,255,255,.06); --glass-border:rgba(255,255,255,.12);
+    --shadow:0 10px 30px rgba(0,0,0,.5);
+  }
+  [data-theme="light"]{
+    --bg:#f4f6fb; --bg-elev:#ffffff; --text:#0c1220; --text-dim:#5b6472;
+    --accent:#6d28d9; --accent2:#0891b2;
+    --glass:rgba(255,255,255,.7); --glass-border:rgba(0,0,0,.08);
+    --shadow:0 10px 30px rgba(13,18,30,.1);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:-20%; z-index:-2;
+    background:
+      radial-gradient(800px 600px at 15% 10%, rgba(139,92,246,.25), transparent 60%),
+      radial-gradient(700px 500px at 85% 20%, rgba(6,182,212,.22), transparent 60%),
+      radial-gradient(600px 500px at 50% 90%, rgba(236,72,153,.18), transparent 60%);
+    filter:blur(40px);
+  }
+  .app{max-width:1350px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column}
+  header{position:sticky; top:0; z-index:20; padding:16px 18px; backdrop-filter:saturate(140%) blur(12px);}
+  .header-inner{display:flex; align-items:center; gap:12px}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; white-space:nowrap}
+  .logo-badge{width:38px; height:38px; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:grid; place-items:center; box-shadow:var(--shadow)}
+  .logo-badge svg{width:22px; height:22px; color:white}
+  .search-wrap{flex:1; display:flex; align-items:center; gap:8px; background:var(--glass); border:1px solid var(--glass-border); padding:9px 12px; border-radius:14px}
+  .search-wrap svg{width:18px; height:18px; opacity:.7; flex:0 0 auto}
+  .search-wrap input{flex:1; background:transparent; border:0; outline:0; color:var(--text); font-size:15px}
+  .icon-btn{width:40px; height:40px; display:grid; place-items:center; border-radius12px; background:var(--glass); border:1px solid var(--glass-border); color:var(--text); cursor:pointer; transition:.2s; flex:0 0 auto}
+  .icon-btn:hover{transform:translateY(-1px)}
+  .icon-btn svg{width:20px; height:20px}
+  main{flex:1; display:grid; grid-template-columns:380px 1fr; gap:22px; padding:8px 18px 28px}
+  .glass{background:var(--glass); border:1px solid var(--glass-border); backdrop-filter:blur(18px) saturate(140%); box-shadow:var(--shadow)}
+  .playlist{border-radius:24px; padding:14px; display:flex; flex-direction:column; max-height:calc(100vh - 130px)}
+  .playlist-head{display:flex; align-items:center; justify-content:space-between; padding:4px 8px 10px}
+  .playlist-head h2{margin:0; font-size:12px; text-transform:uppercase; letter-spacing:.12em; opacity:.7}
+  .count{font-size:12px; background:var(--bg-elev); padding:4px 8px; border-radius:999px; border:1px solid var(--glass-border)}
+  .tracks{overflow:auto; padding-right:6px; margin-right:-6px; flex:1}
+  .tracks::-webkit-scrollbar{width:8px}
+  .tracks::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14); border-radius:8px}
+  [data-theme="light"] .tracks::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15)}
+  .track{display:grid; grid-template-columns:40px 1fr auto; gap:12px; align-items:center; padding:10px; border-radius:14px; cursor:pointer; transition:.18s; border:1px solid transparent}
+  .track:hover{background:rgba(255,255,255,.06)}
+  [data-theme="light"] .track:hover{background:rgba(0,0,0,.04)}
+  .track.active{background:linear-gradient(180deg, rgba(139,92,246,.18), rgba(6,182,212,.14)); border-color:rgba(139,92,246,.35)}
+  .num{width:38px; height:38px; display:grid; place-items:center; border-radius:10px; background:var(--bg-elev); font-size:13px; color:var(--text-dim); border:1px solid var(--glass-border); font-weight:600}
+  .track.active .num{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border:0}
+  .t-info{min-width:0}
+  .t-title{font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:600}
+  .t-artist{font-size:12px; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px}
+  .t-genre{font-size:10px; padding4px 7px; padding:3px 7px; border-radius:999px; background:var(--bg-elev); border:1px solid var(--glass-border); color:var(--text-dim); text-transform:uppercase; letter-spacing:.05em; height:fit-content}
+  .player{display:flex; flex-direction:column; align-items:center; gap:22px; padding:30px 20px 34px; border-radius:28px}
+  .art-wrap{position:relative; width:min(340px,78vw); aspect-ratio:1/1}
+  .album-art{width:100%; height:100%; border-radius:32px; display:grid; place-items:center; font-size:clamp(84px,18vw,120px); font-weight:800; color:white; text-shadow:0 10px 30px rgba(0,0,0,.35); box-shadow:0 20px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.18); user-select:none; transition:transform .5s}
+  .album-art.playing{animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  #visualizer{position:absolute; left:50%; transform:translateX(-50%); bottom:-20px; width:112%; height:92px; opacity:.92; pointer-events:none; filter:drop-shadow(0 8px 20px rgba(0,0,0,.35))}
+  .now-info{text-align:center; max-width:680px; padding:0 10px}
+  .now-title{font-size:clamp(22px,3.2vw,32px); font-weight:800; line-height:1.15; margin:0 0 6px}
+  .now-artist{margin:0; color:var(--text-dim); font-size:15px}
+  .badge{display:inline-flex; margin-top:10px; padding:6px 12px; border-radius:999px; background:var(--bg-elev); border:1px solid var(--glass-border); font-size:12px; text-transform:uppercase; letter-spacing:.08em}
+  .controls{width:100%; max-width:720px; display:flex; flex-direction:column; gap:18px}
+  .progress{display:grid; grid-template-columns:48px 1fr 48px; gap:10px; align-items:center}
+  .time{font-variant-numeric:tabular-nums; font-size:13px; color:var(--text-dim); text-align:center}
+  .seek{-webkit-appearance:none; width:100%; height:6px; border-radius:999px; background:linear-gradient(to right, var(--accent) 0%, var(--accent) var(--p,0%), rgba(255,255,255,.18) var(--p,0%), rgba(255,255,255,.18) 100%); outline:none; cursor:pointer}
+  [data-theme="light"] .seek{background:linear-gradient(to right, var(--accent) 0%, var(--accent) var(--p,0%), rgba(0,0,0,.15) var(--p,0%), rgba(0,0,0,.15) 100%)}
+  .seek::-webkit-slider-thumb{-webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:white; border:2px solid var(--accent); box-shadow:0 2px 8px rgba(0,0,0,.35); margin-top:-6px}
+  .seek::-moz-range-thumb{width:18px; height:18px; border-radius:50%; background:white; border:2px solid var(--accent); box-shadow:0 2px 8px rgba(0,0,0,.35)}
+  .seek::-moz-range-track{height:6px; border-radius:999px; background:transparent}
+  .buttons{display:flex; align-items:center; justify-content:center; gap:14px}
+  .ctrl{width:48px; height:48px; display:grid; place-items:center; border-radius:15px; background:var(--glass); border:1px solid var(--glass-border); color:var(--text); cursor:pointer; transition:.18s}
+  .ctrl:hover{transform:translateY(-2px)} .ctrl:active{transform:translateY(0) scale(.97)}
+  .ctrl.active{background:linear-gradient(135deg, rgba(139,92,246,.28), rgba(6,182,212,.26)); border-color:rgba(139,92,246,.5); color:white}
+  .ctrl.play{width:70px; height:70px; border-radius:22px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border:0; box-shadow:0 14px 34px rgba(139,92,246,.38)}
+  .ctrl.play:hover{transform:translateY(-2px) scale(1.03)}
+  .ctrl svg{width:22px; height:22px}
+  .ctrl.play svg{width:30px; height:30px}
+  .ctrl.repeat.one{position:relative}
+  .ctrl.repeat.one::after{content:"1"; position:absolute; font-size:10px; font-weight:800; background:white; color:#6d28d9; width:16px; height:16px; border-radius:50%; display:grid; place-items:center; right:-4px; bottom:-4px; border:2px solid var(--bg-elev)}
+  .bottom-row{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap}
+  .vol{display:flex; align-items:center; gap:10px}
+  .vol .ctrl{width:40px; height:40px; border-radius:12px}
+  .vol-slider{-webkit-appearance:none; width:130px; height:4px; border-radius:999px; background:rgba(255,255,255,.2); outline:none; cursor:pointer}
+  [data-theme="light"] .vol-slider{background:rgba(0,0,0,.18)}
+  .vol-slider::-webkit-slider-thumb{-webkit-appearance:none; width:14px; height:14px; border-radius:50%; background:white; border:2px solid var(--accent); box-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .hints{display:flex; gap:8px; flex-wrap:wrap; opacity:.7; font-size:12px}
+  .hint{padding:4px 8px; border-radius:8px; background:var(--bg-elev); border:1px solid var(--glass-border)}
+  .playlist-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.5); opacity:0; pointer-events:none; transition:.3s; z-index:30}
+  .playlist-backdrop.show{opacity:1; pointer-events:auto}
+  @media (max-width:980px){
+    main{grid-template-columns:1fr; padding:0 14px 24px}
+    .playlist{position:fixed; left:12px; right:12px; bottom:12px; height:72vh; transform:translateY(110%); transition:.35s cubic-bezier(.22,.8,.26,1); z-index:40; margin:0; max-height:none}
+    .playlist.open{transform:translateY(0)}
+    .player{padding:22px 14px 26px}
+  }
+  @media (max-width:560px){
+    header{padding:12px 14px}
+    .logo span{display:none}
+    .buttons{gap:10px} .ctrl{width:44px; height:44px} .ctrl.play{width:64px; height:64px}
+    .hints{display:none} .vol-slider{width:90px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="header-inner">
+      <div class="logo" title="Radhaswami">
+        <div class="logo-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <main>
+    <aside class="playlist glass" id="playlist">
+      <div class="playlist-head">
+        <h2>Playlist</h2>
+        <div class="count" id="count">17 tracks</div>
+      </div>
+      <div class="tracks" id="tracks"></div>
+    </aside>
+
+    <section class="player glass">
+      <div class="art-wrap">
+        <div class="album-art" id="albumArt">R</div>
+        <canvas id="visualizer"></canvas>
+      </div>
+
+      <div class="now-info">
+        <h1 class="now-title" id="nowTitle">Select a Bhajan</h1>
+        <p class="now-artist" id="nowArtist">Radhaswami</p>
+        <span class="badge" id="nowGenre">Bhajan</span>
+      </div>
+
+      <div class="controls">
+        <div class="progress">
+          <span class="time" id="curTime">0:00</span>
+          <input id="seek" class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+          <span class="time" id="totTime">0:00</span>
+        </div>
+
+        <div class="buttons">
+          <button class="ctrl" id="shuffle" title="Shuffle (S)" aria-label="Shuffle">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 3l4 4-4 4V8h-3.99c-1.5 0-2.87.81-3.59 2.13l-3.86 6.2A5.99 5.99 0 0 1 .5 19.36V17.36c1.5 0 2.87-.81 3.59-2.13l3.86-6.2C8.68 7.7 10.05 6.9 11.55 6.9H17V3zM3.5 10.87V8.87c1.5 0 2.87.8 3.59 2.13l.84 1.35-1.7 2.73-.14-.22A3.99 3.99 0 0 0 3.5 10.87zM17 14v-3h-5.45c-.49 0-.96.12-1.38.35l-1.12 1.8c.66.25 1.37.38 2.1.38H17v-3l4 4-4 4z"/></svg>
+          </button>
+          <button class="ctrl" id="prev" title="Previous" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+          </button>
+          <button class="ctrl play" id="play" title="Play/Pause (Space)" aria-label="Play">
+            <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+          </button>
+          <button class="ctrl" id="next" title="Next" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zm-3.5 6-8.5 6V6z"/></svg>
+          </button>
+          <button class="ctrl repeat" id="repeat" title="Repeat (R)" aria-label="Repeat">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          </button>
+        </div>
+
+        <div class="bottom-row">
+          <div class="vol">
+            <button class="ctrl" id="mute" title="Mute (M)" aria-label="Mute">
+              <svg id="volIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </button>
+            <input id="volume" class="vol-slider" type="range" min="0" max="1" step="0.01" value="0.9" aria-label="Volume">
+          </div>
+          <div class="hints">
+            <span class="hint">Space: Play</span>
+            <span class="hint">← → ±5s</span>
+            <span class="hint">M S R</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
+
+<script>
+const songs = [
+  { id: 1, title: "NAMO NAMO SATGURU NAMO", src: "songs/NAMO-NAMO-SATGURU-NAMO.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 270 },
+  { id: 2, title: "BARAMBAR KARU VINTI", src: "songs/02-BARAMBAR-KARU-VINTI-RADHA-SWAMI-AAGE.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 315 },
+  { id: 3, title: "KARU VINTI DOKARJODI", src: "songs/03 KARU VINTI DOKARJODI ARJ S", artist: "Radhaswami", genre: "Bhajan", duration: 285 },
+  { id: 4, title: "DARD DUKHI KE VIRHAN BHARI", src: "songs/04 DARD DUKHI KE VIRHAN BHARI", artist: "Radhaswami", genre: "Bhajan", duration: 380 },
+  { id: 5, title: "MERE PYARE GURU DATA", src: "songs/05-MERE-PYARE-GURU-DATA.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 330 },
+  { id: 6, title: "GURU KI KAR HARDAM POOJA", src: "songs/06-GURU-KI-KAR-HARDAM-POOJA.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 290 },
+  { id: 7, title: "GURU DHAYAN DHARO TUM", src: "songs/07-GURU-DHAYAN-DHARO-TUM.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 310 },
+  { id: 8, title: "CHARAN SHARAN KI VANDANA", src: "songs/08 CHARAN SHARAN KI VANDANA", artist: "Radhaswami", genre: "Bhajan", duration: 280 },
+  { id: 9, title: "RADHA SWAMI NAAM SURIR", src: "songs/09-RADHA-SWAMI-NAAM-SURIR-MAN-MEIN.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 355 },
+  { id: 10, title: "AARTI AAGE RADHA SWAMI KI", src: "songs/10-AARTI-AAGE-RADHA-SWAMI-KI.mp3", artist: "Radhaswami", genre: "Aarti", duration: 390 },
+  { id: 11, title: "NAMO NAMO SATGURU HAATH JODE", src: "songs/11-NAMO-NAMO-SATGURU-HAATH-JODE-KARU-VINNTI.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 320 },
+  { id: 12, title: "MANWA TU BANA MADARI", src: "songs/12-MANWA-TU-BANA-MADARI.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 275 },
+  { id: 13, title: "MAIN TO DHUDHAT DOLU", src: "songs/13-MAIN-TO-DHUDHAT-DOLU-HE-SATGURU.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 345 },
+  { id: 14, title: "TAN MAN DHAN KI BAAZI", src: "songs/15-TAN-MAN-DHAN-KI-BAAZI-LA-LE.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 295 },
+  { id: 15, title: "TANHE NAHI AAYA CHINA", src: "songs/16-TANHE-NAHI-AAYA-CHINA.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 305 },
+  { id: 16, title: "Mera To Satguru Raazi Sai", src: "satsang/Mera To Satguru Raazi Sai.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 615 },
+  { id: 17, title: "Satguru Mere Main Arj Karu Dar Tere", src: "satsang/Satguru Mere Main Arj Karu Dar Tere.mp3", artist: "Radhaswami", genre: "Bhajan", duration: 615 }
+];
+
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('play');
+const playIcon = document.getElementById('playIcon');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const shuffleBtn = document.getElementById('shuffle');
+const repeatBtn = document.getElementById('repeat');
+const muteBtn = document.getElementById('mute');
+const volIcon = document.getElementById('volIcon');
+const volumeSlider = document.getElementById('volume');
+const seek = document.getElementById('seek');
+const curTime = document.getElementById('curTime');
+const totTime = document.getElementById('totTime');
+const nowTitle = document.getElementById('nowTitle');
+const nowArtist = document.getElementById('nowArtist');
+const nowGenre = document.getElementById('nowGenre');
+const albumArt = document.getElementById('albumArt');
+const tracksEl = document.getElementById('tracks');
+const searchInput = document.getElementById('search');
+const countEl = document.getElementById('count');
+const themeBtn = document.getElementById('themeBtn');
+const themeIcon = document.getElementById('themeIcon');
+const menuBtn = document.getElementById('menuBtn');
+const playlist = document.getElementById('playlist');
+const backdrop = document.getElementById('backdrop');
+const visualizer = document.getElementById('visualizer');
+const ctx = visualizer.getContext('2d');
+
+let current = 0;
+let isPlaying = false;
+let isShuffle = localStorage.getItem('rs_shuffle') === '1';
+let repeatMode = parseInt(localStorage.getItem('rs_repeat') || '0'); //0 off,1 all,2 one
+let lastVol = parseFloat(localStorage.getItem('rs_vol') || '0.9');
+
+const playSVG = '<path fill="currentColor" d="M8 5.14v14l11-7-11-7z"/>';
+const pauseSVG = '<path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+const volOnSVG = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+const volOffSVG = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+
+function fmt(s){s=Math.floor(s||0); const m=Math.floor(s/60); const r=s%60; return m+':'+(r<10?'0':'')+r;}
+function setTheme(t){ document.documentElement.dataset.theme=t; localStorage.setItem('rs_theme',t); themeIcon.innerHTML = t==='light' ? '<path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 10z"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>' : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';}
+function initTheme(){ const saved=localStorage.getItem('rs_theme'); const prefers=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'; setTheme(saved||prefers); }
+function updatePlayIcon(){ playIcon.innerHTML = isPlaying ? pauseSVG : playSVG; playBtn.setAttribute('aria-label', isPlaying?'Pause':'Play'); }
+function renderPlaylist(filter=''){
+  const f=filter.toLowerCase();
+  tracksEl.innerHTML='';
+  const list = songs.filter(s=>!f || s.title.toLowerCase().includes(f) || s.artist.toLowerCase().includes(f));
+  countEl.textContent = list.length + ' tracks';
+  songs.forEach((s,idx)=>{
+    if(f && !(s.title.toLowerCase().includes(f)||s.artist.toLowerCase().includes(f))) return;
+    const div=document.createElement('div');
+    div.className='track'+(idx===current?' active':'');
+    div.dataset.idx=idx;
+    div.innerHTML = `<div class="num">${String(s.id).padStart(2,'0')}</div>
+      <div class="t-info"><div class="t-title">${s.title}</div><div class="t-artist">${s.artist}</div></div>
+      <div class="t-genre">${s.genre}</div>`;
+    div.onclick=()=>{ load(idx,true); closePlaylist(); };
+    tracksEl.appendChild(div);
+  });
+}
+
+function load(i, autoplay=false){
+  current = i;
+  const s = songs[i];
+  nowTitle.textContent = s.title;
+  nowArtist.textContent = s.artist;
+  nowGenre.textContent = s.genre;
+  albumArt.textContent = s.title.trim().charAt(0).toUpperCase();
+  const h1 = (i*37)%360, h2=(h1+70)%360;
+  albumArt.style.background = `linear-gradient(135deg, hsl(${h1} 75% 56%), hsl(${h2} 70% 46%))`;
+  audio.src = s.src;
+  audio.load();
+  totTime.textContent = fmt(s.duration);
+  curTime.textContent = '0:00';
+  seek.value=0; seek.style.setProperty('--p','0%');
+  renderPlaylist(searchInput.value);
+  localStorage.setItem('rs_last', i);
+  if(autoplay) play();
+}
+function play(){ initAudio(); audio.play().then(()=>{isPlaying=true; albumArt.classList.add('playing'); updatePlayIcon();}).catch(()=>{}); }
+function pause(){ audio.pause(); isPlaying=false; albumArt.classList.remove('playing'); updatePlayIcon(); }
+function togglePlay(){ isPlaying?pause():play(); }
+function prev(){ if(audio.currentTime>3){audio.currentTime=0;return;} const i = isShuffle? Math.floor(Math.random()*songs.length) : (current-1+songs.length)%songs.length; load(i,true); }
+function next(){ if(isShuffle){ let n; do{n=Math.floor(Math.random()*songs.length)}while(n===current&&songs.length>1); load(n,true); return; } let n=current+1; if(n>=songs.length){ if(repeatMode===0){pause(); audio.currentTime=0; return;} n=0; } load(n,true); }
+function updateShuffleUI(){ shuffleBtn.classList.toggle('active', isShuffle); }
+function updateRepeatUI(){ repeatBtn.classList.toggle('active', repeatMode>0); repeatBtn.classList.toggle('one', repeatMode===2); repeatBtn.title = repeatMode===0?'Repeat off': repeatMode===1?'Repeat all':'Repeat one'; }
+function setVolume(v){ audio.volume=v; volumeSlider.value=v; lastVol=v; localStorage.setItem('rs_vol',v); volIcon.innerHTML = v>0?volOnSVG:volOffSVG; }
+function toggleMute(){ if(audio.volume>0){ setVolume(0); } else { setVolume(lastVol||0.9); } }
+function openPlaylist(){ playlist.classList.add('open'); backdrop.classList.add('show'); }
+function closePlaylist(){ playlist.classList.remove('open'); backdrop.classList.remove('show'); }
+
+let audioCtx, analyser, dataArray, sourceNode;
+function initAudio(){
+  if(audioCtx) return;
+  audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+  analyser = audioCtx.createAnalyser(); analyser.fftSize=256;
+  sourceNode = audioCtx.createMediaElementSource(audio);
+  sourceNode.connect(analyser); analyser.connect(audioCtx.destination);
+  dataArray = new Uint8Array(analyser.frequencyBinCount);
+  resizeCanvas(); drawViz();
+}
+function resizeCanvas(){ const dpr = Math.min(window.devicePixelRatio||1,2); visualizer.width = visualizer.clientWidth * dpr; visualizer.height = visualizer.clientHeight * dpr; }
+window.addEventListener('resize', resizeCanvas);
+function drawViz(){
+  requestAnimationFrame(drawViz);
+  if(!analyser) return;
+  analyser.getByteFrequencyData(dataArray);
+  ctx.clearRect(0,0,visualizer.width,visualizer.height);
+  const bars = 64; const step = Math.floor(dataArray.length/bars); const w = visualizer.width/bars;
+  for(let i=0;i<bars;i++){
+    const v = dataArray[i*step]/255; const h = v * visualizer.height*0.85;
+    const x = i*w + w*0.15; const y = visualizer.height - h;
+    const hue = 260 + v*60;
+    ctx.fillStyle = `hsla(${hue}, 80%, 65%, ${0.25+v*0.75})`;
+    const r = Math.min(12*(visualizer.width/600), w*0.6);
+    roundRect(ctx, x, y, w*0.7, h, r);
+    ctx.fill();
+  }
+}
+function roundRect(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
+
+audio.addEventListener('timeupdate', ()=>{
+  if(!audio.duration) return;
+  const p = (audio.currentTime/audio.duration)*100;
+  seek.value = p; seek.style.setProperty('--p', p+'%');
+  curTime.textContent = fmt(audio.currentTime);
+});
+audio.addEventListener('loadedmetadata', ()=>{ totTime.textContent = fmt(audio.duration || songs[current].duration); });
+audio.addEventListener('ended', ()=>{
+  if(repeatMode===2){ audio.currentTime=0; play(); return; }
+  next();
+});
+audio.addEventListener('play', ()=>{ isPlaying=true; updatePlayIcon(); albumArt.classList.add('playing'); if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); });
+audio.addEventListener('pause', ()=>{ isPlaying=false; updatePlayIcon(); albumArt.classList.remove('playing'); });
+
+seek.addEventListener('input', e=>{ const p=e.target.value/100; if(audio.duration) audio.currentTime = p*audio.duration; seek.style.setProperty('--p', e.target.value+'%'); });
+volumeSlider.addEventListener('input', e=> setVolume(parseFloat(e.target.value)));
+muteBtn.onclick = toggleMute;
+playBtn.onclick = togglePlay;
+prevBtn.onclick = prev;
+nextBtn.onclick = next;
+shuffleBtn.onclick = ()=>{ isShuffle=!isShuffle; localStorage.setItem('rs_shuffle', isShuffle?'1':'0'); updateShuffleUI(); };
+repeatBtn.onclick = ()=>{ repeatMode = (repeatMode+1)%3; localStorage.setItem('rs_repeat', repeatMode); updateRepeatUI(); };
+searchInput.addEventListener('input', e=> renderPlaylist(e.target.value));
+themeBtn.onclick = ()=> setTheme(document.documentElement.dataset.theme==='light'?'dark':'light');
+menuBtn.onclick = openPlaylist;
+backdrop.onclick = closePlaylist;
+
+window.addEventListener('keydown', e=>{
+  if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+  switch(e.code){
+    case 'Space': e.preventDefault(); togglePlay(); break;
+    case 'ArrowRight': audio.currentTime = Math.min((audio.duration||0)-1, audio.currentTime+5); break;
+    case 'ArrowLeft': audio.currentTime = Math.max(0, audio.currentTime-5); break;
+    case 'KeyM': toggleMute(); break;
+    case 'KeyS': shuffleBtn.click(); break;
+    case 'KeyR': repeatBtn.click(); break;
+    case 'ArrowUp': e.preventDefault(); setVolume(Math.min(1, audio.volume+0.05)); break;
+    case 'ArrowDown': e.preventDefault(); setVolume(Math.max(0, audio.volume-0.05)); break;
+  }
+});
+
+function init(){
+  initTheme();
+  setVolume(lastVol);
+  updateShuffleUI();
+  updateRepeatUI();
+  renderPlaylist();
+  const last = parseInt(localStorage.getItem('rs_last')||'0');
+  load(isNaN(last)?0:last, false);
+  resizeCanvas();
+}
+init();
+</script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+</body>
+</html>
